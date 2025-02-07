@@ -1,0 +1,52 @@
+name: Deploy to GitHub Pages
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - uses: actions/checkout@v4
+
+      # Enable Corepack (for managing package managers like pnpm)
+      - run: corepack enable
+
+      # Set up Node.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Install dependencies and build the project
+      - run: npm install
+      - run: npx nuxt build --preset github_pages
+
+      # Upload the static site artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./.output/public
+
+  deploy:
+    # Depend on the build job
+    needs: build
+
+    # Grant necessary permissions
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github_pages environment
+    environment:
+      name: github_pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

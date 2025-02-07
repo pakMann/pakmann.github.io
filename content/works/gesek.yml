@@ -1,0 +1,11 @@
+start_date: 2015-01-01
+end_date: 2016-02-01
+role: Fullstack Developer
+company: gesek.id
+note: company no longer exists
+location: Jakarta, ID (hybrid)
+employment: full-time
+about: Tennova Cipta Inatech is a digital startup company behind [Gesek](https://gesek.id), which later became [Pomona](https://pomona.id).
+objectives: |
+  As part of a startup focused on credit card offers, implemented designs from the UI/UX designer into fully functional websites and CMS using Ruby on Rails. Developed RESTful APIs and managed cloud servers on AWS, ensuring optimal performance and reliability.
+stacks: Ruby on Rails, Slim, Bootstrap (CSS), MySQL, Elasticsearch, AWS (EC2, RDS), Git, Grape API

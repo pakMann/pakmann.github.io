@@ -1,0 +1,13 @@
+period: Feb 2022 - Feb 2024
+start_date: 2022-02-01
+end_date: 2024-02-01
+role: Fullstack Web Developer
+company: <a href="https://corporate.tokhimo.com/" target="_blank">Tokhimo Inc.</a>
+location: Tokyo, JP (remote)
+employment: contract
+about: |
+  <a href="https://www.tokhimo.com" target="_blank">Tokhimo Inc.</a> connects Japanese businesses with multilingual talent and offers offshore software development. Through job portals, internships, and TITP, they promote diversity and innovation for Japan's global success.
+objectives: |
+  Worked closely with the project manager and frontend designer to develop the MVP for a cloud-based CRM (SaaS) tailored for clinics, focusing on core features, third-party integrations (LINE, Stripe), and scalable AWS infrastructure.
+stacks: |
+  Ruby on Rails, PostgreSQL, Bulma (Sass), VueJS, Stripe, LINE LIFF, Docker, AWS (Route 53, S3, Lightsail, RDS, EC2, SES, ACM, ECS, Fargate), Git, Jira, Figma

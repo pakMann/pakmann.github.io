@@ -1,0 +1,12 @@
+start_date: 2019-06-01
+end_date: 2020-01-01
+role: Frontend Developer
+company: <a href="https://www.sejasa.com/" target="_blank">sejasa.com</a>
+location: Bandung, ID (on-site)
+employment: full-time
+about: |
+  [sejasa.com](https://sejasa.com) is an online marketplace that brings together various service providers such as construction and cleaning services with customers. Sejasa is part of Recommend Group Malaysia which operates in Malaysia ([recommend.my](https://recommend.my)) and Thailand ([helpdee.com](https://helpdee.com)) as well.
+objectives: |
+  Worked with a UI/UX designer to translate designs into Ruby on Rails pages, ensuring smooth functionality integration for other developers. Addressed frontend issues in existing web and app pages to improve the user experience. Also created mobile apps within the <a href="https://play.google.com/store/apps/details?id=com.grabtaxi.passenger" target="_blank">Grab super app</a>.
+achievements: Create an embedded mobile application inside [Grab Super App](https://play.google.com/store/apps/details?id=com.grabtaxi.passenger) (if you're using Grab app, you can see through **Clean & Fix** menu).
+stacks: Ruby On Rails, Haml, Bootstrap (Sass), jQuery Mobile, Git

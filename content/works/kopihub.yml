@@ -1,0 +1,19 @@
+start_date: 2017-01-01
+end_date: 2019-05-01
+role: Lead Developer
+company: <a href="https://www.lipsiagroup.com/it" target="_blank">Kopihub</a>
+location: Bandung, ID (hybrid)
+employment: full-time
+about: KopiHub is a subsidiary of Lipsia Group ([lipsiagroup.com](https://lipsiagroup.com)), a small Milan-based company offering services like website development and e-commerce outsourcing to its clients.
+objectives: |
+  Led the development team in maintaining and enhancing a custom e-commerce engine, building and managing clients' e-commerce websites, including occasional redesigns. Managed server configuration, maintenance, and migration tasks.
+portfolios:
+  - https://www.nerdoverdose.com
+  - https://www.ogtm.com
+  - https://www.bagnoitaliano.it
+  - https://www.lampada-proiettore.com
+  - https://www.leshommes.com
+  - https://www.babingtons.com
+  - https://www.bi-kappa.it
+  - https://www.santaninfabags.it
+stacks: Ruby on Rails, Git, Haml, Slim, Bootstrap (Sass), jQuery, Ubuntu Server, PayPal

@@ -1,0 +1,21 @@
+start_date: 2020-01-01
+end_date: 2022-01-01
+role: Lead Developer
+company: <a href="https://synergyengineering.com/" target="_blank">Synergy Engrg. Group</a>
+location: S. Tangerang, ID (hybrid)
+employment: contract
+about: |
+  [Synergy Engineering](https://synergyengineering.com) is a multidisciplinary engineering consultant with specialist capability providing comprehensive technical services across industries, primarily to the energy sector including Oil and Gas, renewable energy, solar, and general industry.
+objectives: |
+  Led the team in developing <a href="https://sbs.synergyengineering.com" target="_blank">a business suite</a> for managing HR, CRM, and engineering calculations at a multidisciplinary engineering consultant serving the energy sector.
+achievements: I developed an online attendance system, used by over 300 employees since the onset of Covid-19, replacing the outdated fingerprint scan system with an Active Directory-integrated solution. Additionally, I created a web-based tool for safety and process engineers to calculate and analyze fire and explosion risks.
+portfolios:
+  -
+    desc: https://sbs.synergyengineering.com;
+    stacks: Ruby on Rails, Slim, Bootstrap (Sass), Microsoft Active Directory, PostgreSQL, MongoDB, Git, Ubuntu Server, Trello
+  -
+    desc: Document Management System for Pertamina Hulu Energi Offshore Southeast Sumatra (PHE OSES);
+    stacks: Laravel, MySQL, Git, Ubuntu Server. Trello
+  -
+    desc: Technical Management of Change system for Pertamina Hulu Energi Offshore Southeast Sumatra (PHE OSES).
+    stacks: Symfony, MySQL, Git, Ubuntu Server, Trello
