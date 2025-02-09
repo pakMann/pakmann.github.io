@@ -1,6 +1,7 @@
 // @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap')
 
 @import "bootstrap/scss/mixins/banner"
 @include bsBanner("")
@@ -94,6 +95,62 @@ a
   &:hover::after
     background-color: $primary
 
+h1
+  font-size: 30px
+  font-family: 'DM Sans', sans-serif
+  font-weight: 700
+  margin-bottom: 1rem
+
+.about
+  font-size: 24px
+
+#pic-container
+  margin-top: -128px
+  height: 100vh
+  display: flex
+  align-items: center
+  justify-content: center
+
+@keyframes scales
+  to
+    scale: 0.5
+
+#pic
+  // position: relative
+  height: 100%
+  max-height: 384px
+  aspect-ratio: 1/1
+  scale: 1
+  position: sticky
+  top: 0
+  animation: scales linear
+  animation-duration: 1s
+  animation-fill-mode: forwards
+  animation-timeline: scroll()
+  animation-range-start: calc(50vh + 192px)
+  animation-range-end: 100vh
+  transform-origin: center
+  z-index: 3
+
+  &:before
+    position: absolute
+    content: ""
+    aspect-ratio: 1/1
+    width: 75%
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: -1
+    border-radius: 50%
+    background: $primary
+    border: 8px solid #231f20
+
+  &:hover:before
+    animation: pulse 1.25s infinite
+
+  img
+    width: 100%
+
 #content
   position: relative
   background: $bg
@@ -135,14 +192,14 @@ a
     mask: linear-gradient(to top, $bg 50%, rgba($bg, 0) 100%)
     border-radius: 0 0 3rem 3rem
 
-  #sign
-    font-family: WindSong, serif
-    text-align: right
-    font-size: 3rem
-    font-weight: 500
-    user-select: none
-    color: #555
-    margin-top: 2rem
+  // #sign
+  //   font-family: WindSong, serif
+  //   text-align: right
+  //   font-size: 3rem
+  //   font-weight: 500
+  //   user-select: none
+  //   color: #555
+  //   margin-top: 2rem
 
   section.row
     + section.row
@@ -164,7 +221,7 @@ a
     text-align: center
     z-index: 3
     font-size: .75rem
-    letter-spacing: .1em
+    letter-spacing: .025em
 
     a
       padding: 0
@@ -262,3 +319,37 @@ a
 
     &:hover
       color: #555
+
+@keyframes pulse
+  0%
+    width: 80%
+
+  10%
+    width: 75%
+
+  20%
+    width: 85%
+
+  30%
+    width: 80%
+
+  40%
+    width: 70%
+
+  50%
+    width: 65%
+
+  60%
+    width: 75%
+
+  70%
+    width: 70%
+
+  80%
+    width: 75%
+
+  90%
+    width: 70%
+
+  100%
+    width: 65%
