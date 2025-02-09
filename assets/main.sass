@@ -101,56 +101,6 @@ h1
   font-weight: 700
   margin-bottom: 1rem
 
-.about
-  font-size: 24px
-
-#pic-container
-  margin-top: -128px
-  height: 100vh
-  display: flex
-  align-items: center
-  justify-content: center
-
-@keyframes scales
-  to
-    scale: 0.5
-
-#pic
-  // position: relative
-  height: 100%
-  max-height: 384px
-  aspect-ratio: 1/1
-  scale: 1
-  position: sticky
-  top: 0
-  animation: scales linear
-  animation-duration: 1s
-  animation-fill-mode: forwards
-  animation-timeline: view()
-  animation-range-start: calc(50vh + 192px)
-  animation-range-end: 100vh
-  transform-origin: center
-  z-index: 3
-
-  &:before
-    position: absolute
-    content: ""
-    aspect-ratio: 1/1
-    width: 75%
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
-    z-index: -1
-    border-radius: 50%
-    background: $primary
-    border: 8px solid #231f20
-
-  &:hover:before
-    animation: pulse 1.25s infinite
-
-  img
-    width: 100%
-
 #content
   position: relative
   background: $bg
@@ -191,15 +141,6 @@ h1
     // background: linear-gradient(to bottom, rgba($bg, 0), $bg)
     mask: linear-gradient(to top, $bg 50%, rgba($bg, 0) 100%)
     border-radius: 0 0 3rem 3rem
-
-  // #sign
-  //   font-family: WindSong, serif
-  //   text-align: right
-  //   font-size: 3rem
-  //   font-weight: 500
-  //   user-select: none
-  //   color: #555
-  //   margin-top: 2rem
 
   section.row
     + section.row
