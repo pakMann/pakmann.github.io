@@ -67,6 +67,6 @@
 
 <template lang="pug">
   #footer
-    a(href="/cv.pdf")
+    a(href="/cv.pdf" target="_blank")
       span.stagger-text(v-html="formattedText")
 </template>
