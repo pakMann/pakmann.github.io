@@ -56,9 +56,6 @@
 @import "bootstrap/scss/utilities/api"
 // scss-docs-end import-stack
 
-$footer-height: 256px
-$bg: #e7e8e9
-
 html
   @include media-breakpoint-down(sm)
     font-size: 14px
@@ -233,36 +230,6 @@ h1
 
   .desc *
     font-size: .9rem
-
-#footer
-  position: fixed
-  z-index: 1
-  background: $body-bg
-  bottom: 0
-  left: 0
-  right: 0
-  height: $footer-height
-  display: flex
-  justify-content: center
-  align-items: center
-
-  a
-    color: #999
-    text-decoration: none
-    font-weight: bold
-    font-size: 1.5rem
-    text-transform: uppercase
-    letter-spacing: 0.05em
-    transition: color 0.3s
-    // padding-top: 20px
-    display: block
-    padding-right: 0
-
-    &:after
-      content: none
-
-    &:hover
-      color: #555
 
 @keyframes pulse
   0%

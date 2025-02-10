@@ -1,0 +1,72 @@
+<script setup lang="ts">
+  import { ref, onMounted } from 'vue';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const text = "Download CV (PDF)";
+  const formattedText = ref(text.split("").map(char => `<span>${char}</span>`).join(""));
+
+  onMounted(() => {
+    gsap.from(".stagger-text span", {
+      opacity: 0.1,
+      y: 50,
+      duration: 0.5,
+      ease: "power3.out",
+      stagger: 0.05,
+      filter: "blur(5px)",
+      scrollTrigger: {
+        trigger: "#content",
+        start: "bottom bottom-=146px",
+        end: "bottom bottom-=256px",
+        scrub: true
+      }
+    });
+  });
+</script>
+
+<style lang="sass">
+  @import "bootstrap/scss/functions"
+  @import "@/assets/variables"
+
+  #footer
+    position: fixed
+    z-index: 1
+    background: $body-bg
+    bottom: 0
+    left: 0
+    right: 0
+    height: $footer-height
+    display: flex
+    justify-content: center
+    align-items: center
+
+    a
+      text-decoration: none
+      font-weight: bold
+      font-size: 1.5rem
+      text-transform: uppercase
+      letter-spacing: 0.05em
+      display: block
+      padding-right: 0
+
+      &:after
+        content: none
+
+      span
+        color: #555
+        display: inline-block
+        min-width: 7px
+        transition: color 0.3s
+
+      &:hover
+        span
+          color: #999
+</style>
+
+<template lang="pug">
+  #footer
+    a(href="/cv.pdf")
+      span.stagger-text(v-html="formattedText")
+</template>
