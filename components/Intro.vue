@@ -6,9 +6,9 @@
   gsap.registerPlugin(ScrollTrigger);
 
   const picRef = ref<HTMLElement | null>(null);
+  const picScroller = ref<HTMLElement | null>(null);
   const textRef = ref<HTMLElement | null>(null);
   const endRef = ref<HTMLElement | null>(null);
-  const textScrollRef = ref<HTMLElement | null>(null);
 
   const splitText = (element: HTMLElement) => {
     const nodes = Array.from(element.childNodes);
@@ -52,10 +52,23 @@
         scale: 0.5,
         duration: 1,
         marginTop: 0,
+        marginBottom: 0,
         paddingTop: 0,
         paddingBottom: 0,
         scrollTrigger: {
-          trigger: picRef.value,
+          trigger: picScroller.value,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        }
+      });
+
+      gsap.to(picScroller.value, {
+        height: '50vh',
+        marginTop: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: picScroller.value,
           start: "top top",
           end: "bottom top",
           scrub: true,
@@ -68,6 +81,19 @@
 <style lang="sass" scoped>
   @import "bootstrap/scss/functions"
   @import "@/assets/variables"
+  @import "bootstrap/scss/variables-dark"
+  @import "bootstrap/scss/maps"
+  @import "bootstrap/scss/mixins"
+  @import "bootstrap/scss/utilities"
+
+  h1
+    font-size: 2rem
+    font-family: 'DM Sans', sans-serif
+    font-weight: 700
+    margin-bottom: 1rem
+
+    @include media-breakpoint-down(sm)
+      font-size: 1.5rem
 
   .intro-container
     height: 500vh
@@ -77,17 +103,26 @@
       top: 0
 
       .about-container
+        .pic-scroll-container
+          height: 100vh
+          margin-top: -128px
+          display: flex
+          justify-content: center
+          align-items: center
+
         .pic
-          height: 384px
+          width: 384px
+          max-width: 100%
           aspect-ratio: 1/1
           scale: 1
           transform-origin: center
-          z-index: 3
-          margin: 0 auto
-          margin-top: -128px
-          padding-top: calc(50vh - 192px)
-          padding-bottom: calc(50vh - 192px)
+          // margin: 0 auto
+          // margin-top: -128px
+          // padding-top: calc(50vh - 192px)
+          // padding-bottom: calc(50vh - 192px)
           box-sizing: content-box
+          // padding-top: 50vh
+          // padding-bottom: 50%
 
           &:before
             position: absolute
@@ -109,16 +144,18 @@
             width: 100%
 
         .about
-          font-size: 24px
+          font-size: 1.5rem
           margin-bottom: 128px
 
+          @include media-breakpoint-down(sm)
+            font-size: 1.25rem
 </style>
 
 <template lang="pug">
   .intro-container(ref="endRef")
     .intro
       .about-container.row.justify-content-center
-        .pic-scroll-container
+        .pic-scroll-container(ref="picScroller")
           //- .pic-container(ref="picRef")
           .pic(ref="picRef")
             img(src="@/public/pakmann.png")

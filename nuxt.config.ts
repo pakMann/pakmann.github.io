@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ["~/assets/main.sass"],
   modules: ['@nuxt/content'],
+  devServer: {
+    port: 4000
+  },
   app: {
     head: {
       link: [

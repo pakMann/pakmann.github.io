@@ -56,6 +56,10 @@
 @import "bootstrap/scss/utilities/api"
 // scss-docs-end import-stack
 
+:root
+  font-size: clamp(12px, calc(0.75rem + ((1vw - 3.2px) * 0.25)), 16px)
+  min-height: 0vw
+
 html
   @include media-breakpoint-down(sm)
     font-size: 14px
@@ -91,15 +95,6 @@ a
 
   &:hover::after
     background-color: $primary
-
-h1
-  font-size: 30px
-  font-family: 'DM Sans', sans-serif
-  font-weight: 700
-  margin-bottom: 1rem
-
-  @include media-breakpoint-down(sm)
-    font-size: 24px
 
 #content
   position: relative
