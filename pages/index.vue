@@ -6,15 +6,15 @@ import Footer from '~/components/Footer.vue';
 </script>
 
 <template lang="pug">
-  #content
+  #content(ref="contentRef")
     #main-content.container
       Intro
 
-      Works
+    Works
 
-      Projects
+    Projects
 
-      #copy Built with <a href="https://nuxt.com" target="_blank">Nuxt</a> and hosted on <a href="https://github.com/pakMann/pakmann.github.io" target="_blank">GitHub</a>.
+    #copy Built with <a href="https://nuxt.com" target="_blank">Nuxt</a> and hosted on <a href="https://github.com/pakMann/pakmann.github.io" target="_blank">GitHub</a>.
 
   Footer
 </template>

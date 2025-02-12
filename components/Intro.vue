@@ -58,6 +58,7 @@
         scrollTrigger: {
           trigger: picScroller.value,
           start: "top top",
+          endTrigger: picScroller.value,
           end: "bottom top",
           scrub: true,
         }
@@ -96,7 +97,7 @@
       font-size: 1.5rem
 
   .intro-container
-    height: 500vh
+    height: 300vh
 
     .intro
       position: sticky

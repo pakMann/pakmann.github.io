@@ -1749,7 +1749,7 @@ $nested-kbd-font-weight:            null !default; // Deprecated in v5.2.0, remo
 $pre-color:                         null !default;
 
 // custom vars
-$footer-height: 256px;
+$footer-height: 50vh;
 $bg: #e7e8e9;
 
 @import "bootstrap/scss/variables-dark"; // TODO: can be removed safely in v6, only here to avoid breaking changes in v5.3

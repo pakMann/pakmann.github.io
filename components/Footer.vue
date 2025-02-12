@@ -7,19 +7,20 @@
 
   const text = "Download CV (PDF)";
   const formattedText = ref(text.split("").map(char => `<span>${char}</span>`).join(""));
+  const contentRef = ref<HTMLElement | null>(null);
 
   onMounted(() => {
     gsap.from(".stagger-text span", {
       opacity: 0.1,
-      y: 50,
+      x: -50,
       duration: 0.5,
       ease: "power3.out",
       stagger: 0.05,
-      filter: "blur(5px)",
+      filter: "blur(10px)",
       scrollTrigger: {
-        trigger: "#content",
-        start: "bottom bottom-=146px",
-        end: "bottom bottom-=256px",
+        trigger: contentRef.value,
+        start: () => "bottom " + window.innerHeight*0.75,
+        end: "bottom center",
         scrub: true
       }
     });
@@ -45,7 +46,7 @@
     a
       text-decoration: none
       font-weight: bold
-      font-size: 1.5rem
+      font-size: 3vw
       text-transform: uppercase
       letter-spacing: 0.05em
       display: block
@@ -57,7 +58,7 @@
       span
         color: #555
         display: inline-block
-        min-width: 7px
+        min-width: 1vw
         transition: color 0.3s
 
       &:hover
