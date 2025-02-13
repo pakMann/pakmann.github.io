@@ -1,18 +1,50 @@
 <script setup lang="ts">
-import { marked } from 'marked'
-import dayjs from 'dayjs'
+import { marked } from 'marked';
+import dayjs from 'dayjs';
+
+import { ref, onMounted } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Configure marked to disable paragraph wrapping
 marked.setOptions({
   renderer: new marked.Renderer(),
   breaks: false,
   gfm: true
-})
+});
 
-const works = await queryCollection('works').order('start_date', 'DESC').all()
+const works = await queryCollection('works').order('start_date', 'DESC').all();
 works.forEach(work => {
   work.objectives = work.objectives.replace(/\\n/g, '\n')
   work.period = `${dayjs(work.start_date).format('MMM YYYY')} - ${dayjs(work.end_date).format('MMM YYYY')}`
+});
+
+const workRef = ref<HTMLElement | null>(null);
+
+onMounted(() => {
+  gsap.to('#content', {
+    background: '#E1DFD3',
+    duration: 1,
+    scrollTrigger: {
+      trigger: workRef.value,
+      start: () => "top " + window.innerHeight*0.5,
+      end: "top top",
+      scrub: true,
+    }
+  });
+
+  gsap.to(workRef.value, {
+    opacity: 1,
+    duration: 2,
+    scrollTrigger: {
+      trigger: workRef.value,
+      start: () => "top " + window.innerHeight*0.5,
+      end: "top top",
+      scrub: true,
+    }
+  });
 })
 </script>
 
@@ -25,6 +57,10 @@ works.forEach(work => {
   @import "bootstrap/scss/utilities"
 
   #works
+    padding-left: 1rem
+    padding-right: 1rem
+    opacity: 0
+
     .work
       position: relative
 
@@ -86,16 +122,19 @@ works.forEach(work => {
       font-size: .9rem
 
     @include media-breakpoint-down(sm)
-      padding-left: 1rem
-      padding-right: 1rem
+      h2
+        margin-bottom: 3rem
+
 </style>
 
 <template lang="pug">
-  section#works
+  section#works(ref="workRef")
     .container
       .row.justify-content-center
         .col-md-3
-          h2.position-sticky Work Experience
+          h2.position-sticky
+            span //
+            | Work History
 
         .col-md-6
           div.work.mb-5(v-for="work in works" :key="work.company")

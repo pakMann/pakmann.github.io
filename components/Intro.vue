@@ -79,7 +79,7 @@
   });
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
   @import "bootstrap/scss/functions"
   @import "@/assets/variables"
   @import "bootstrap/scss/variables-dark"
@@ -102,6 +102,8 @@
     .intro
       position: sticky
       top: 0
+      padding-left: 1rem
+      padding-right: 1rem
 
       .about-container
         .pic-scroll-container

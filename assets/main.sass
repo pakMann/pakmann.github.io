@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap')
 
 @import "bootstrap/scss/mixins/banner"
 @include bsBanner("")
@@ -57,7 +58,7 @@
 // scss-docs-end import-stack
 
 :root
-  font-size: clamp(12px, calc(0.75rem + ((1vw - 3.2px) * 0.25)), 16px)
+  // font-size: clamp(12px, calc(0.75rem + ((1vw - 3.2px) * 0.25)), 16px)
   min-height: 0vw
 
 html
@@ -118,10 +119,6 @@ a
     backdrop-filter: blur(3px)
     // mask: linear-gradient(rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%)
 
-    @include media-breakpoint-down(sm)
-      margin-left: -1rem
-      margin-right: -1rem
-
   &:before
     top: 0
     // background: linear-gradient(to bottom, $bg, rgba($bg, 0))
@@ -140,7 +137,12 @@ a
     h2
       top: 128px
       font-size: 1.25rem
-      font-weight: 600
+      font-weight: 400
+      font-family: Outfit, sans-serif
+
+      span
+        color: $primary
+        padding-right: .5rem
 
   .hightlight
     color: $primary

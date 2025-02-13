@@ -30,6 +30,10 @@
 <style lang="sass">
   @import "bootstrap/scss/functions"
   @import "@/assets/variables"
+  @import "bootstrap/scss/variables-dark"
+  @import "bootstrap/scss/maps"
+  @import "bootstrap/scss/mixins"
+  @import "bootstrap/scss/utilities"
 
   #footer
     position: fixed
@@ -64,6 +68,9 @@
       &:hover
         span
           color: #999
+
+      @include media-breakpoint-down(sm)
+        font-size: 6vw
 </style>
 
 <template lang="pug">
