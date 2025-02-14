@@ -67,14 +67,17 @@ onMounted(() => {
       &:before
         position: absolute
         z-index: -1
-        background: white
-        border-radius: 1rem
+        // background: #FFFAF3
+        border-image: url('@/public/box.png') 180 fill stretch
+        border-image-width: 60px
+        // background-size: 100%
+        // border-radius: 1rem
         top: -1rem
         right: -1rem
         bottom: -1rem
         left: -1rem
         content: ""
-        box-shadow: 2px 2px 10px rgba(black, .1)
+        // box-shadow: 2px 2px 10px rgba(black, .1)
         opacity: 0
         transition: all 1s
 
