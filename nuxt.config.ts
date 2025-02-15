@@ -7,6 +7,11 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: false
   },
+  vite: {
+    esbuild: {
+      target: "es2019"
+    }
+  },
   devServer: {
     port: 4000
   },
