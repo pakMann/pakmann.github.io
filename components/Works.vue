@@ -29,7 +29,7 @@ onMounted(() => {
     duration: 1,
     scrollTrigger: {
       trigger: workRef.value,
-      start: () => "top " + window.innerHeight*0.5,
+      start: () => "top " + window.innerHeight*0.75,
       end: "top top",
       scrub: true,
     }
@@ -40,10 +40,25 @@ onMounted(() => {
     duration: 2,
     scrollTrigger: {
       trigger: workRef.value,
-      start: () => "top " + window.innerHeight*0.5,
+      start: () => "top " + window.innerHeight*0.75,
       end: "top top",
       scrub: true,
     }
+  });
+
+  const elements = document.querySelectorAll<HTMLElement>(".work");
+
+  elements.forEach((el) => {
+    gsap.to(el, {
+      "--opacity-before": 1,
+      scrollTrigger: {
+        trigger: el,
+        start: "top 50%",  // Enter center of viewport
+        end: "bottom 50%", // Leave center of viewport
+        toggleActions: "play reverse play reverse",
+        markers: false, // Enable for debugging
+      },
+    });
   });
 })
 </script>
@@ -78,11 +93,8 @@ onMounted(() => {
         left: -1rem
         content: ""
         // box-shadow: 2px 2px 10px rgba(black, .1)
-        opacity: 0
-        transition: all 1s
-
-      &:hover:before
-        opacity: 1
+        opacity: var(--opacity-before, 0)
+        transition: all .5s
 
     .header
       display: flex
