@@ -1,8 +1,26 @@
 <script setup lang="ts">
-import Intro from '~/components/Intro.vue';
-import Works from '~/components/Works.vue';
-import Projects from '~/components/Projects.vue';
-import Footer from '~/components/Footer.vue';
+  import { onMounted } from "vue";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  onMounted(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const handleResize = () => {
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    onBeforeUnmount(() => {
+      window.removeEventListener("resize", handleResize);
+    });
+  });
+
+  import Intro from '~/components/Intro.vue';
+  import Works from '~/components/Works.vue';
+  import Projects from '~/components/Projects.vue';
+  import Footer from '~/components/Footer.vue';
 </script>
 
 <template lang="pug">

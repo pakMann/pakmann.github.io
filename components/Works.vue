@@ -3,10 +3,7 @@ import { marked } from 'marked';
 import dayjs from 'dayjs';
 
 import { ref, onMounted } from 'vue';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import gsap from "gsap";
 
 // Configure marked to disable paragraph wrapping
 marked.setOptions({
@@ -25,19 +22,19 @@ const workRef = ref<HTMLElement | null>(null);
 
 onMounted(() => {
   gsap.to('#content', {
-    background: '#E1DFD3',
+    background: '#F1ECDF',
     duration: 1,
     scrollTrigger: {
       trigger: workRef.value,
-      start: () => "top " + window.innerHeight*0.75,
-      end: "top top",
-      scrub: true,
+      start: "top top+=128px",
+      end: "bottom top",
+      toggleActions: "play reverse play reverse",
     }
   });
 
   gsap.to(workRef.value, {
     opacity: 1,
-    duration: 2,
+    duration: 1,
     scrollTrigger: {
       trigger: workRef.value,
       start: () => "top " + window.innerHeight*0.75,
@@ -56,7 +53,6 @@ onMounted(() => {
         start: "top 50%",  // Enter center of viewport
         end: "bottom 50%", // Leave center of viewport
         toggleActions: "play reverse play reverse",
-        markers: false, // Enable for debugging
       },
     });
   });
@@ -82,19 +78,15 @@ onMounted(() => {
       &:before
         position: absolute
         z-index: -1
-        // background: #FFFAF3
         border-image: url('@/public/box.png') 180 fill stretch
         border-image-width: 60px
-        // background-size: 100%
-        // border-radius: 1rem
         top: -1rem
         right: -1rem
         bottom: -1rem
         left: -1rem
         content: ""
-        // box-shadow: 2px 2px 10px rgba(black, .1)
         opacity: var(--opacity-before, 0)
-        transition: all .5s
+        transition: all .2s
 
     .header
       display: flex

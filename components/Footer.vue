@@ -1,11 +1,8 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import gsap from "gsap";
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  const text = "Download CV (PDF)";
+  const text = "Download CV";
   const formattedText = ref(text.split("").map(char => `<span>${char}</span>`).join(""));
   const contentRef = ref<HTMLElement | null>(null);
 

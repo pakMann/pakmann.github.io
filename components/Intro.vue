@@ -1,9 +1,6 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
+  import gsap from "gsap";
 
   const picRef = ref<HTMLElement | null>(null);
   const picScroller = ref<HTMLElement | null>(null);
@@ -87,6 +84,18 @@
   @import "bootstrap/scss/mixins"
   @import "bootstrap/scss/utilities"
 
+  @keyframes rotate
+    from
+      transform: translate(-50%, -50%) rotate(0deg)
+    to
+      transform: translate(-50%, -50%) rotate(360deg)
+
+  @keyframes rotatecclockwise
+    from
+      transform: translate(-50%, -50%) rotate(0deg)
+    to
+      transform: translate(-50%, -50%) rotate(-360deg)
+
   h1
     font-size: 2rem
     font-family: 'DM Sans', sans-serif
@@ -127,7 +136,8 @@
           // padding-top: 50vh
           // padding-bottom: 50%
 
-          &:before
+          &:before,
+          &:after
             position: absolute
             content: ""
             aspect-ratio: 1/1
@@ -136,12 +146,24 @@
             left: 50%
             transform: translate(-50%, -50%)
             z-index: -1
-            border-radius: 50%
-            background: $primary
-            border: 8px solid #231f20
+            // border-radius: 50%
+            // background: #E5533D
+            // border: 8px solid #231f20
+            transform-origin: center
+
+          &:before
+            background: url(@/public/round.svg) no-repeat center center
+            animation: rotate 10s linear infinite
+
+          &:after
+            background: url(@/public/roundborder.svg) no-repeat center center
+            animation: rotatecclockwise 15s linear infinite
 
           &:hover:before
-            animation: pulse 1.25s infinite
+            animation: rotate 10s linear infinite, pulse 1.25s infinite
+
+          &:hover:after
+            animation: rotatecclockwise 15s linear infinite, pulse 1.25s infinite
 
           img
             width: 100%
