@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ["~/assets/main.sass"],
   modules: ['@nuxt/content'],
+  nitro: {
+    compressPublicAssets: false
+  },
   devServer: {
     port: 4000
   },

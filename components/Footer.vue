@@ -46,10 +46,10 @@
 
     a
       text-decoration: none
-      font-weight: bold
+      font-weight: 300
       font-size: 3vw
       text-transform: uppercase
-      letter-spacing: 0.05em
+      letter-spacing: 0.1em
       display: block
       padding-right: 0
 
@@ -61,6 +61,7 @@
         display: inline-block
         min-width: 1vw
         transition: color 0.3s
+        font-family: 'Londrina Solid', cursive, sans-serif
 
       &:hover
         span

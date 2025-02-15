@@ -96,10 +96,12 @@
     to
       transform: translate(-50%, -50%) rotate(-360deg)
 
-  h1
+  h1,
+  h1 *
     font-size: 2rem
-    font-family: 'DM Sans', sans-serif
-    font-weight: 700
+    // font-family: 'DM Sans', sans-serif
+    font-family: 'Londrina Solid', cursive, sans-serif
+    font-weight: 300
     margin-bottom: 1rem
 
     @include media-breakpoint-down(sm)

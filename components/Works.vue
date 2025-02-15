@@ -103,7 +103,7 @@ onMounted(() => {
         margin: 0 1rem
 
       h3.role
-        font-size: 1rem
+        font-size: 1.2rem
         margin: 0
 
       h3.company
@@ -125,8 +125,8 @@ onMounted(() => {
         color: #999
         margin: 0
 
-    .desc *
-      font-size: .9rem
+    // .desc *
+    //   font-size: .9rem
 
     @include media-breakpoint-down(sm)
       h2

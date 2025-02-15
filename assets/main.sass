@@ -1,8 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap')
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap')
 
 @import "bootstrap/scss/mixins/banner"
 @include bsBanner("")
@@ -66,7 +62,7 @@ html
     font-size: 14px
 
 *
-  font-family: Geist, sans-serif
+  font-family: Nunito, sans-serif
   color: #555
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
@@ -94,8 +90,12 @@ a
     background-color: #999
     transition: all .2s
 
-  &:hover::after
-    background-color: $primary
+  &:hover
+    color: #999
+
+    &:after
+      background-color: $primary
+      transform: translateY(-50%) translateX(10%) rotate(45deg)
 
 #content
   position: relative
@@ -136,9 +136,10 @@ a
 
     h2
       top: 128px
-      font-size: 1.25rem
+      font-size: 1.5rem
       font-weight: 400
-      font-family: Outfit, sans-serif
+      // font-family: Outfit, sans-serif
+      font-family: 'Londrina Solid', cursive, sans-serif
 
       span
         color: $primary
