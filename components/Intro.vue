@@ -135,6 +135,7 @@
           box-sizing: content-box
           // padding-top: 50vh
           // padding-bottom: 50%
+          overflow: hidden
 
           &:before,
           &:after
