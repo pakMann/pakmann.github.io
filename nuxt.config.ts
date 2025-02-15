@@ -7,6 +7,9 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: false
   },
+  plugins: [
+    '~/plugins/fflate.ts'
+  ],
   vite: {
     esbuild: {
       target: "es2019"

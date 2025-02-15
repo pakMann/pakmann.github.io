@@ -1,5 +1,3 @@
-import { decompressSync } from "fflate";
-
 if (typeof DecompressionStream === "undefined") {
   globalThis.DecompressionStream = class {
     constructor() {
