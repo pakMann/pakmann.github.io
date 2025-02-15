@@ -122,6 +122,9 @@
           justify-content: center
           align-items: center
 
+          @supports (height: 100dvh)
+            height: 100dvh
+
         .pic
           width: 384px
           max-width: 100%
