@@ -50,8 +50,8 @@ onMounted(() => {
       "--opacity-before": 1,
       scrollTrigger: {
         trigger: el,
-        start: "top 50%",  // Enter center of viewport
-        end: "bottom 50%", // Leave center of viewport
+        start: "top 128px",  // Enter center of viewport
+        end: "bottom 128px", // Leave center of viewport
         toggleActions: "play reverse play reverse",
       },
     });
@@ -139,9 +139,7 @@ onMounted(() => {
     .container
       .row.justify-content-center
         .col-md-3
-          h2.position-sticky
-            span //
-            | Work History
+          h2.position-sticky Work History
 
         .col-md-6
           div.work.mb-5(v-for="work in works" :key="work.company")

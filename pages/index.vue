@@ -30,7 +30,7 @@
 
     Works
 
-    Projects
+    //- Projects
 
     #copy Built with <a href="https://nuxt.com" target="_blank">Nuxt</a> and hosted on <a href="https://github.com/pakMann/pakmann.github.io" target="_blank">GitHub</a>.
 

@@ -3,9 +3,7 @@
     .container
       .row.justify-content-center(style="height: 500vh")
         .col-md-3
-          h2.position-sticky
-            span //
-            | Projects
+          h2.position-sticky Projects
 
         .col-md-6
           //- div.work.mb-5(v-for="work in works" :key="work.company")

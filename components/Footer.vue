@@ -57,7 +57,7 @@
         content: none
 
       span
-        color: #555
+        color: #F8F1CC
         display: inline-block
         min-width: 1vw
         transition: color 0.3s
@@ -65,7 +65,7 @@
 
       &:hover
         span
-          color: #999
+          color: #fff
 
       @include media-breakpoint-down(sm)
         font-size: 6vw
