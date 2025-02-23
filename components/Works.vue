@@ -50,8 +50,8 @@ onMounted(() => {
       "--opacity-before": 1,
       scrollTrigger: {
         trigger: el,
-        start: "top 128px",  // Enter center of viewport
-        end: "bottom 128px", // Leave center of viewport
+        start: window.innerWidth >= 576 ? "top 128px" : "top 50%",
+        end: window.innerWidth >= 576 ? "bottom 128px" : "bottom 50%",
         toggleActions: "play reverse play reverse",
       },
     });
