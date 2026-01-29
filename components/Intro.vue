@@ -98,10 +98,10 @@
 
   h1,
   h1 *
-    font-size: 2rem
+    font-size: 2.5rem
     // font-family: 'DM Sans', sans-serif
     font-family: 'Londrina Solid', cursive, sans-serif
-    font-weight: 300
+    font-weight: 400
     margin-bottom: 1rem
 
     @include media-breakpoint-down(sm)

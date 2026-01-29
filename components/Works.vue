@@ -43,6 +43,21 @@ onMounted(() => {
     }
   });
 
+  gsap.from("h2", {
+    opacity: 0.1,
+    x: -500,
+    duration: 0.5,
+    ease: "power3.out",
+    stagger: 0.05,
+    filter: "blur(10px)",
+    scrollTrigger: {
+      trigger: 'h2',
+      start: "bottom bottom",
+      end: "top 128px",
+      scrub: true
+    }
+  });
+
   const elements = document.querySelectorAll<HTMLElement>(".work");
 
   elements.forEach((el) => {
