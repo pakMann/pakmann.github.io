@@ -1,0 +1,1219 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import * as yaml from 'js-yaml';
+
+const dataDir = path.resolve(process.cwd(), 'data');
+const load = (file) => yaml.load(fs.readFileSync(path.join(dataDir, `${file}.yml`), 'utf8')) ?? [];
+
+const sections = load('sections');
+const dataMap = {
+  educations: load('educations'),
+  works: load('works'),
+  projects: load('projects'),
+  skills: load('skills'),
+};
+
+const md = (s) =>
+  String(s ?? '')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+const host = (url) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return String(url ?? '');
+  }
+};
+
+const linkifyUrls = (s) =>
+  String(s ?? '').replace(
+    /(https?:\/\/[^\s]+)/g,
+    (m) => `<a href="${m}" target="_blank" rel="noopener">${host(m)}</a>`
+  );
+
+const profile = {
+  name: 'Arman Adhitama Prawirasasra',
+  shortName: 'Pakmann',
+  title: 'Full Stack Web Developer',
+  email: 'arman.adhitama@gmail.com',
+  phone: '+6289676676869',
+  location: 'Bandung, Indonesia',
+  linkedin: 'https://www.linkedin.com/in/armanadhitama',
+  website: 'https://pakmann.cv',
+  summary: `As a passionate Full Stack Developer, I bring extensive experience in designing and maintaining web applications across front-end and back-end environments. Proficient in modern technologies like HTML, CSS/Scss/Sass, JavaScript (Vue, Node.js), and Ruby (RoR), I excel at building dynamic, user-friendly, and scalable applications. With expertise in database management (SQL, MongoDB) and version control (Git), I ensure seamless integration, troubleshoot issues effectively, and deliver optimal user experiences.
+
+I have hands-on experience in creating RESTful APIs, implementing authentication and authorization, and following Agile practices to deliver high-quality software. My familiarity with cloud platforms (AWS, Heroku) and containerization tools (Docker) enables me to build efficient and scalable solutions.`,
+};
+
+const works = dataMap.works ?? [];
+const projects = dataMap.projects ?? [];
+const skills = dataMap.skills ?? [];
+const educations = dataMap.educations ?? [];
+
+const date = new Date().toLocaleDateString('en-GB', {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={`${profile.name} — ${profile.title}`} />
+    <title>{profile.shortName} — {profile.title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ============================================================
+         1. Tokens
+      ============================================================ */
+      :root {
+        --paper: #f4eee2;
+        --paper-2: #ece4d2;
+        --ink: #221c16;
+        --muted: #6b5f52;
+        --line: rgba(88, 72, 56, 0.22);
+        --rule-thick: #221c16;
+        --accent: #8a4a2f;
+        --gold: #a8852f;
+        --font-sans: "Inter", "Helvetica Neue", Arial, "Segoe UI", Roboto,
+          system-ui, sans-serif;
+        --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+        --font-body: Georgia, "Times New Roman", "Playfair Display", serif;
+        --container: 1120px;
+        --section-space: clamp(70px, 10vh, 120px);
+      }
+
+      /* ============================================================
+         2. Reset & base
+      ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 20% 10%, rgba(168, 133, 47, 0.05), transparent 40%),
+          var(--paper);
+        color: var(--ink);
+        font-family: var(--font-body);
+        font-size: 17px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: #fff8ec;
+      }
+
+      /* ============================================================
+         3. Masthead
+      ============================================================ */
+      .masthead {
+        border-bottom: 4px double var(--rule-thick);
+        padding: 22px 0 14px;
+        margin-bottom: 18px;
+      }
+
+      .mast-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-family: var(--font-sans);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+      }
+
+      .mast-logo {
+        position: relative;
+        width: clamp(140px, 22vw, 220px);
+        aspect-ratio: 1;
+        margin: 4px auto 6px;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          margin: auto;
+          width: 80%;
+          aspect-ratio: 1;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          pointer-events: none;
+        }
+
+        &::before {
+          background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 288 288%27%3E%3Cpath d=%27M146.5 1.3c6.8.8 13.4 2.3 20.1 3.8C184 9 207.7 16 221.1 27.9s9.3 10.5 14 15.6c10.7 11.4 21.6 17.5 30.6 31.2 9.4 14.3 15.3 27.1 18.7 44.1 1.2 6.1 2.3 12.1 3.2 18.2s.5 7.6 0 10-2.1 6.3-3.4 9.4c-2.7 6.2-7 11.8-9.6 18.1-5 12.2-1.6 25.4-6.1 37.6s-29.7 36.3-39.9 45.5c-18.9 17.1-38.8 18.9-62.4 25.5 0 0-14.7 3.1-19.7 3.7s-6.8.3-9 0c-4.4-.7-8.7-2.1-13.1-3.3-6.2-1.7-12.2-4.1-18.4-5.7-13.4-3.5-24.1-4.2-36.7-11-24-13-40.6-29.7-51.1-55.4-4.2-10.4-3.3-20.7-6-31.1-1.8-7.1-5.7-13.7-8.2-20.5s-2.9-7.3-3.6-11.2-.5-7.2 0-9.5c.8-3.9 2.1-7.6 3.4-11.4 2.1-6.5 5.1-12.6 6.9-19.2 5-18.4 3.3-29 16.3-44.9s32.8-30.8 53.4-42c18.8-10.5 37.8-18.4 59.1-20.3 1.8-.2 5.3-.2 7 0%27 style=%27fill:%23e4523d%27/%3E%3C/svg%3E');
+          animation: spin-cw 22s linear infinite;
+        }
+
+        &::after {
+          background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 288 288%27%3E%3Cpath d=%27M143 5.2c1.2 0 2.4 0 3 .1 6.4.8 12.6 2.1 19.1 3.6h.6c24.6 5.6 42.8 13.2 52.7 22 8.4 7.4 9.5 9.3 10.4 10.9.7 1.1 1.4 2.4 3.3 4.4 4.1 4.4 8.2 8 12.2 11.4 6.5 5.7 12.6 11.1 18 19.2 9.8 14.9 15 27.2 18.1 42.7 1.4 7.2 2.4 12.7 3.2 18 .8 5.2.5 6.4 0 8.3v.3c-.5 2.2-2.3 6.5-3.2 8.6-1.2 2.7-2.8 5.4-4.4 8.2-1.8 3.1-3.8 6.4-5.2 9.9-2.8 6.9-3.2 13.9-3.6 20.7-.3 6-.6 11.7-2.6 17-3.9 10.5-26.2 32.6-38.8 43.9-14.4 13-29.5 16.7-46.9 21-4.4 1.1-9 2.2-13.7 3.5-1.4.3-14.7 3.1-19.2 3.6-1.8.2-3.2.3-4.4.3s-2.2-.1-3.3-.3h-.2c-3.1-.5-6.2-1.4-9.5-2.3-1.1-.3-2.1-.6-3.2-.9-2.8-.8-5.7-1.7-8.4-2.6-3.2-1.1-6.6-2.2-10-3.1-3.8-1-7.4-1.8-10.9-2.5-8.8-1.9-16.3-3.5-24.9-8.1-24.4-13.2-39.6-29.7-49.3-53.4-2.3-5.6-2.9-11.2-3.6-17.2-.5-4.3-1-8.8-2.2-13.4-1.2-4.7-3.2-9-5.1-13.3-1.2-2.6-2.3-5.1-3.2-7.6-.5-1.5-1-2.7-1.4-3.7-1.3-3.5-1.6-4.2-2.1-6.9-.7-3.8-.3-6.6 0-8 .7-3.4 1.8-6.7 3-10.3l.2-.6c.9-2.7 1.9-5.3 3-8 1.4-3.6 2.9-7.4 4-11.4 1.4-5.2 2.3-9.9 3.1-14 2.1-10.9 3.6-18.7 12.4-29.4 12-14.7 30.5-29.2 52.3-41C103.9 12.7 121.7 6.6 139.8 5c.7 0 1.9-.1 3.1-.1m.1-3.8c-1.3 0-2.6 0-3.5.1-21.3 1.9-40.3 9.8-59.1 20.3C59.8 32.7 40 47.6 27 63.5S15.7 90 10.7 108.4c-1.8 6.6-4.8 12.7-6.9 19.2-1.3 3.8-2.6 7.5-3.4 11.4-.5 2.3-.7 5.6 0 9.5s1.1 4.4 3.6 11.2 6.4 13.4 8.2 20.5c2.7 10.4 1.8 20.7 6 31.1 10.5 25.7 27.1 42.4 51.1 55.4 12.6 6.8 23.3 7.5 36.7 11 6.2 1.6 12.2 4 18.4 5.7 4.4 1.2 8.7 2.6 13.1 3.3 1.3.2 2.4.3 4.1.3s2.8 0 4.9-.3c5-.6 19.7-3.7 19.7-3.7 23.6-6.6 43.5-8.4 62.4-25.5 10.2-9.2 35.4-33.3 39.9-45.5s1.1-25.4 6.1-37.6c2.6-6.3 6.9-11.9 9.6-18.1 1.3-3.1 2.9-7 3.4-9.4s.9-3.9 0-10-2-12.1-3.2-18.2c-3.4-17-9.3-29.8-18.7-44.1-9-13.7-19.9-19.8-30.6-31.2-4.7-5.1-.6-3.7-14-15.6S184 8.9 166.6 5c-6.7-1.5-13.3-3-20.1-3.8-.8 0-2.1-.1-3.5-.1%27 style=%27fill:%23231f20%27/%3E%3C/svg%3E');
+          animation: spin-ccw 26s linear infinite;
+        }
+
+        img {
+          position: relative;
+          z-index: 1;
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        &:hover::before {
+          animation:
+            spin-cw 22s linear infinite,
+            pulse-jitter 1.2s ease-in-out infinite;
+        }
+
+        &:hover::after {
+          animation:
+            spin-ccw 26s linear infinite,
+            pulse-jitter 1.6s ease-in-out 0.15s infinite;
+        }
+      }
+
+      @keyframes spin-cw {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes spin-ccw {
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      @keyframes pulse-jitter {
+        0% {
+          width: 80%;
+        }
+        10% {
+          width: 75%;
+        }
+        20% {
+          width: 85%;
+        }
+        30% {
+          width: 80%;
+        }
+        40% {
+          width: 70%;
+        }
+        50% {
+          width: 65%;
+        }
+        60% {
+          width: 75%;
+        }
+        70% {
+          width: 70%;
+        }
+        80% {
+          width: 75%;
+        }
+        90% {
+          width: 70%;
+        }
+        100% {
+          width: 65%;
+        }
+      }
+
+      .mast-tagline {
+        text-align: center;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: clamp(14px, 2vw, 18px);
+        color: var(--muted);
+        margin: 10px 0 0;
+        letter-spacing: 0.5px;
+      }
+
+      /* ============================================================
+         4. Index nav
+      ============================================================ */
+      .index-line {
+        border-block: 1px solid var(--line);
+        margin: 0 0 var(--section-space);
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        gap: clamp(16px, 3.5vw, 44px);
+        flex-wrap: wrap;
+
+        a {
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          color: var(--muted);
+          font-family: var(--font-sans);
+
+          &:hover {
+            color: var(--accent);
+          }
+        }
+      }
+
+      .container {
+        max-width: var(--container);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      section {
+        position: relative;
+        padding: var(--section-space) 0;
+
+        & + section {
+          border-top: 2px solid var(--rule-thick);
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(88, 72, 56, 0.55);
+          }
+        }
+
+        &:first-of-type {
+          padding-top: 0;
+        }
+      }
+
+      /* ============================================================
+         5. Front page
+      ============================================================ */
+      .front {
+        .kicker {
+          text-align: center;
+          font-family: var(--font-sans);
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          color: var(--gold);
+          margin: 0 0 18px;
+        }
+
+        h1 {
+          margin: 0 auto;
+          text-align: center;
+          font-family: var(--font-serif);
+          font-weight: 900;
+          font-size: clamp(34px, 6vw, 64px);
+          line-height: 1.08;
+          letter-spacing: -0.5px;
+          max-width: 900px;
+
+          em {
+            font-style: italic;
+            color: var(--accent);
+          }
+        }
+
+        .byline {
+          text-align: center;
+          font-size: 13.5px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: var(--muted);
+          margin: 16px 0 0;
+
+          b {
+            color: var(--ink);
+          }
+        }
+
+        .rule-orn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          margin: 22px 0 30px;
+          color: var(--gold);
+
+          .line {
+            width: 80px;
+            height: 1px;
+            background: var(--gold);
+          }
+
+          .glyph {
+            font-family: var(--font-serif);
+            font-size: 16px;
+          }
+        }
+      }
+
+      .story-col {
+        column-count: 2;
+        column-gap: 40px;
+        column-rule: 1px solid var(--line);
+
+        p {
+          margin: 0 0 18px;
+          text-align: justify;
+
+          &:first-child::first-letter {
+            font-family: var(--font-serif);
+            font-size: 3.1em;
+            float: left;
+            line-height: 0.82;
+            padding: 4px 8px 0 0;
+            color: var(--accent);
+            font-weight: 700;
+          }
+        }
+      }
+
+      @media (max-width: 700px) {
+        .story-col {
+          column-count: 1;
+        }
+      }
+
+      /* sidebar box */
+      .sideline {
+        margin-top: 34px;
+        border: 2px solid var(--rule-thick);
+        padding: 0;
+
+        .box-head {
+          font-family: var(--font-sans);
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          text-align: center;
+          color: var(--paper);
+          background: var(--rule-thick);
+          padding: 8px 0;
+        }
+
+        .box-body {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          border-top: 1px solid var(--line);
+
+          .cell {
+            padding: 18px 14px;
+            text-align: center;
+
+            & + .cell {
+              border-left: 1px solid var(--line);
+            }
+
+            .num {
+              font-family: var(--font-serif);
+              font-size: 34px;
+              font-weight: 800;
+              color: var(--accent);
+              line-height: 1;
+            }
+
+            .lbl {
+              font-family: var(--font-sans);
+              font-size: 10.5px;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+              color: var(--muted);
+              margin-top: 6px;
+            }
+          }
+        }
+      }
+
+      @media (max-width: 600px) {
+        .sideline .box-body {
+          grid-template-columns: 1fr;
+
+          .cell + .cell {
+            border-left: none;
+            border-top: 1px solid var(--line);
+          }
+        }
+      }
+
+      /* ============================================================
+         6. Section headers
+      ============================================================ */
+      .sec-head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 0 0 40px;
+
+        .rule {
+          flex: 1;
+          height: 1px;
+          background: var(--line);
+        }
+
+        .glyph {
+          color: var(--gold);
+          font-size: 14px;
+        }
+
+        h2 {
+          font-family: var(--font-serif);
+          font-size: clamp(26px, 4.5vw, 40px);
+          font-weight: 800;
+          margin: 0;
+          white-space: nowrap;
+
+          em {
+            font-style: italic;
+            color: var(--accent);
+          }
+        }
+      }
+
+      @media (max-width: 640px) {
+        .sec-head {
+          flex-wrap: wrap;
+
+          h2 {
+            white-space: normal;
+          }
+        }
+      }
+
+      /* ============================================================
+         7. Articles (experience)
+      ============================================================ */
+      .article {
+        padding: 26px 0;
+        border-bottom: 1px solid var(--line);
+
+        &:first-child {
+          padding-top: 0;
+        }
+
+        &:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        .article-head {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: baseline;
+          gap: 6px 20px;
+          margin-bottom: 10px;
+
+          h3 {
+            margin: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(19px, 2.6vw, 24px);
+            line-height: 1.25;
+
+            .co {
+              font-style: italic;
+              color: var(--muted);
+              font-weight: 600;
+            }
+          }
+
+          .period {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--paper);
+            background: var(--accent);
+            padding: 3px 12px;
+            white-space: nowrap;
+          }
+        }
+
+        .where {
+          font-family: var(--font-sans);
+          font-size: 13px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: var(--muted);
+          margin: 0 0 14px;
+        }
+
+        .body {
+          font-size: 16.5px;
+          color: #3d342b;
+          margin: 12px 0;
+          overflow-wrap: anywhere;
+
+          .label {
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 12.5px;
+            font-family: var(--font-sans);
+          }
+
+          a {
+            color: var(--accent);
+            overflow-wrap: anywhere;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .tech-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 16px;
+
+          span {
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.35);
+            padding: 3px 11px;
+          }
+        }
+      }
+
+      /* ============================================================
+         8. Projects (classifieds)
+      ============================================================ */
+      .classified-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+
+        > * {
+          min-width: 0;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .classified-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .classified {
+        border: 1.5px solid var(--rule-thick);
+        background: rgba(255, 255, 255, 0.25);
+        padding: 22px 22px 18px;
+        position: relative;
+        display: block;
+        transition: background 0.25s, transform 0.25s;
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 5px;
+          border: 1px solid var(--line);
+          pointer-events: none;
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.5);
+          transform: translateY(-3px);
+        }
+
+        .cat {
+          font-family: var(--font-sans);
+          font-size: 10.5px;
+          font-weight: 800;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--gold);
+          margin-bottom: 6px;
+        }
+
+        h3 {
+          margin: 0 0 4px;
+          font-family: var(--font-serif);
+          font-size: 21px;
+
+          a {
+            transition: color 0.2s;
+
+            &:hover {
+              color: var(--accent);
+            }
+          }
+
+          .year {
+            float: right;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+          }
+        }
+
+        .url {
+          font-family: var(--font-sans);
+          font-size: 12.5px;
+          color: var(--muted);
+          overflow-wrap: anywhere;
+          margin: 0 0 10px;
+
+          &:hover {
+            color: var(--accent);
+          }
+        }
+
+        .desc {
+          margin: 0;
+          font-size: 15.5px;
+          color: #3d342b;
+          line-height: 1.55;
+          overflow-wrap: anywhere;
+
+          a {
+            overflow-wrap: anywhere;
+          }
+        }
+      }
+
+      /* ============================================================
+         9. Skills (stock index)
+      ============================================================ */
+      .market {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+
+        .group h3 {
+          font-family: var(--font-sans);
+          font-size: 12px;
+          font-weight: 800;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          color: var(--accent);
+          border-bottom: 1px solid var(--line);
+          padding-bottom: 8px;
+          margin: 0 0 16px;
+        }
+
+        .ticker {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            padding: 7px 0;
+            border-bottom: 1px dashed var(--line);
+            font-size: 16px;
+            font-family: var(--font-serif);
+
+            .score {
+              font-family: var(--font-sans);
+              font-size: 12px;
+              font-weight: 700;
+              color: var(--gold);
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+
+      /* ============================================================
+         10. Education (briefs)
+      ============================================================ */
+      .brief {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        h3 {
+          margin: 0;
+          font-family: var(--font-serif);
+          font-size: 20px;
+        }
+
+        .meta {
+          font-size: 14.5px;
+          color: var(--muted);
+          font-style: italic;
+        }
+
+        .period {
+          font-family: var(--font-sans);
+          font-size: 12.5px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          color: var(--accent);
+          white-space: nowrap;
+        }
+      }
+
+      /* ============================================================
+         11. Contact (classified ad)
+      ============================================================ */
+      .contact-ad {
+        border: 2px solid var(--rule-thick);
+        text-align: center;
+        padding: 48px 28px 40px;
+        position: relative;
+        background: rgba(255, 255, 255, 0.2);
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 6px;
+          border: 1px solid var(--line);
+          pointer-events: none;
+        }
+
+        .cat {
+          font-family: var(--font-sans);
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: var(--gold);
+        }
+
+        h2 {
+          font-family: var(--font-serif);
+          font-size: clamp(28px, 5vw, 44px);
+          margin: 14px 0 10px;
+
+          em {
+            font-style: italic;
+            color: var(--accent);
+          }
+        }
+
+        p {
+          color: var(--muted);
+          margin: 0 0 26px;
+          font-size: 16.5px;
+        }
+
+        .ad-links {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px;
+
+          a {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 12px 26px;
+            border: 1.5px solid var(--rule-thick);
+            transition: background 0.2s, color 0.2s;
+
+            &.solid {
+              background: var(--rule-thick);
+              color: var(--paper);
+
+              &:hover {
+                background: var(--accent);
+                border-color: var(--accent);
+              }
+            }
+
+            &:not(.solid):hover {
+              background: var(--ink);
+              border-color: var(--ink);
+              color: var(--paper);
+            }
+          }
+        }
+      }
+
+      /* ============================================================
+         12. Footer (colophon)
+      ============================================================ */
+      .colophon {
+        border-top: 4px double var(--rule-thick);
+        margin-top: var(--section-space);
+        padding: 18px 0 34px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-family: var(--font-sans);
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--muted);
+
+        .socials {
+          display: flex;
+          gap: 18px;
+
+          a:hover {
+            color: var(--accent);
+          }
+        }
+      }
+
+      /* reveal defaults */
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+
+        .mast-logo::before,
+        .mast-logo::after {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- ============ MASTHEAD ============ -->
+      <header class="masthead" id="top">
+        <div class="mast-top">
+          <span>{date}</span>
+          <span>Vol. XVII · No. 01</span>
+          <span>Bandung, Indonesia</span>
+        </div>
+        <div class="mast-logo">
+          <img src="/pakmann.png" alt="Pakmann" />
+        </div>
+        <p class="mast-tagline">"The daily broadsheet of a full-stack developer"</p>
+      </header>
+
+      <nav class="index-line">
+        <a href="#front">Front Page</a>
+        {sections.map((s) => (
+          <a href={`#${s.file}`}>{s.title}</a>
+        ))}
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- ============ FRONT PAGE ============ -->
+      <section class="front" id="front">
+        <p class="kicker">Est. 2008</p>
+        <h1>
+          The Developer Who Builds <em>Fast, Scalable &amp; Human</em> Web
+          Applications
+        </h1>
+        <p class="byline">
+          By <b>{profile.name}</b> · Full Stack Web Developer · {profile.location}
+        </p>
+        <div class="rule-orn">
+          <span class="line"></span>
+          <span class="glyph">❖</span>
+          <span class="line"></span>
+        </div>
+
+        <div class="story-col">
+          {profile.summary.split('\n\n').map((para) => (
+            <p>{para}</p>
+          ))}
+        </div>
+
+        <div class="sideline reveal" style="display: none">
+          <div class="box-head">In This Edition — The Numbers</div>
+          <div class="box-body">
+            <div class="cell">
+              <div class="num" data-count="17">0</div>
+              <div class="lbl">Years in print</div>
+            </div>
+            <div class="cell">
+              <div class="num" data-count="25">0</div>
+              <div class="lbl">Stories shipped</div>
+            </div>
+            <div class="cell">
+              <div class="num" data-count="12">0</div>
+              <div class="lbl">Clients served</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ EXPERIENCE ============ -->
+      <section id="works">
+        <div class="sec-head reveal">
+          <span class="glyph">❖</span>
+          <h2>Employment <em>History</em></h2>
+          <span class="rule"></span>
+        </div>
+
+        {works.map((w) => (
+          <article class="article reveal">
+            <div class="article-head">
+              <h3>
+                {w.title}
+                {w.company ? <span class="co">, {w.company}</span> : ''}
+              </h3>
+              <span class="period">{w.period}</span>
+            </div>
+            <p class="where">
+              {w.location}
+              {w.employment ? ` · ${w.employment}` : ''}
+            </p>
+            {w.about && <p class="body" set:html={md(w.about)} />}
+            {w.objectives && (
+              <p class="body">
+                <span class="label">Responsibilities — </span>
+                <span set:html={md(w.objectives)} />
+              </p>
+            )}
+            {w.achievements && (
+              <p class="body">
+                <span class="label">Achievements — </span>
+                <span set:html={md(w.achievements)} />
+              </p>
+            )}
+            {w.portfolios && (
+              <p class="body">
+                <span class="label">Portfolios — </span>
+                <span
+                  set:html={w.portfolios
+                    .map((p) => (typeof p === 'string' ? p : p.desc))
+                    .join(' · ')
+                    .replace(/;\s*$/, '')
+                    .split(' · ')
+                    .map((item) => linkifyUrls(item.trim()))
+                    .join(' · ')}
+                />
+              </p>
+            )}
+            {w.stacks && (
+              <div class="tech-row">
+                {w.stacks.split(',').map((s) => (
+                  <span>{s.trim()}</span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section id="projects">
+        <div class="sec-head reveal">
+          <span class="glyph">❖</span>
+          <h2>Other <em>Projects</em></h2>
+          <span class="rule"></span>
+        </div>
+
+        <div class="classified-grid">
+          {projects.map((p) => (
+            <article class="classified reveal">
+              <div class="cat">Project · {p.year}</div>
+              <h3>
+                {p.url ? (
+                  <a href={p.url} target="_blank" rel="noopener">{p.title}</a>
+                ) : (
+                  p.title
+                )}
+              </h3>
+              {p.url && (
+                <div class="url">
+                  <a href={p.url} target="_blank" rel="noopener">{host(p.url)}</a>
+                </div>
+              )}
+              <p class="desc" set:html={md(p.about)} />
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section id="skills">
+        <div class="sec-head reveal">
+          <span class="glyph">❖</span>
+          <h2>Skills <em>Quotes</em></h2>
+          <span class="rule"></span>
+        </div>
+
+        <div class="market">
+          {skills.map((g) => (
+            <div class="group">
+              <h3 class="reveal">{g.group}</h3>
+              <ul class="ticker">
+                {g.softwares.map((s) => (
+                  <li class="reveal">
+                    <span>{s.name}</span>
+                    {typeof s.score === 'number' && (
+                      <span class="score">{s.score}/5 ▲</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- ============ EDUCATION ============ -->
+      <section id="educations">
+        <div class="sec-head reveal">
+          <span class="glyph">❖</span>
+          <h2>Education <em>Briefs</em></h2>
+          <span class="rule"></span>
+        </div>
+
+        {educations.map((e) => (
+          <div class="brief reveal">
+            <div>
+              <h3>{e.school}</h3>
+              <div class="meta">
+                {e.type}
+                {e.location ? ` — ${e.location}` : ''}
+              </div>
+            </div>
+            <span class="period">{e.period}</span>
+          </div>
+        ))}
+      </section>
+
+      <!-- ============ CONTACT (CLASSIFIED AD) ============ -->
+      <section id="contact">
+        <div class="contact-ad reveal">
+          <div class="cat">Want Ad</div>
+          <h2>
+            Wanted: A <em>Great Project</em>
+          </h2>
+          <p>
+            Full-stack developer with over 17 years in the trade, seeking
+            interesting opportunities.
+          </p>
+          <div class="ad-links">
+            <a class="solid" href={`mailto:${profile.email}`}>Reply by Mail</a>
+            <a href={`https://wa.me/${profile.phone.replace(/\D/g, '')}`}>WhatsApp</a>
+            <a href={profile.linkedin}>LinkedIn</a>
+            <a href={profile.website}>Website</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ COLOPHON ============ -->
+      <footer class="colophon">
+        <span>© {new Date().getFullYear()} {profile.name}</span>
+        <div class="socials">
+          <a href={profile.linkedin}>LinkedIn</a>
+          <a href={`https://wa.me/${profile.phone.replace(/\D/g, '')}`}>WhatsApp</a>
+          <a href={`mailto:${profile.email}`}>Email</a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      gsap.registerPlugin(ScrollTrigger);
+
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReduced) {
+        gsap.utils.toArray('.reveal').forEach((el) => {
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 90%' },
+          });
+        });
+
+        gsap.utils.toArray('[data-count]').forEach((el) => {
+          const target = +el.dataset.count;
+          const state = { v: 0 };
+          ScrollTrigger.create({
+            trigger: el,
+            start: 'top 90%',
+            once: true,
+            onEnter: () => {
+              gsap.to(state, {
+                v: target,
+                duration: 1.4,
+                ease: 'power2.out',
+                onUpdate: () => (el.textContent = Math.round(state.v)),
+              });
+            },
+          });
+        });
+      } else {
+        gsap.set('.reveal', { opacity: 1, transform: 'none' });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const id = link.getAttribute('href');
+          if (id.length > 1) {
+            const target = document.querySelector(id);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

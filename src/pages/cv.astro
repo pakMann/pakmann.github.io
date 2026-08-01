@@ -1,0 +1,527 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import * as yaml from 'js-yaml';
+
+const dataDir = path.resolve(process.cwd(), 'data');
+const load = (file) => yaml.load(fs.readFileSync(path.join(dataDir, `${file}.yml`), 'utf8')) ?? [];
+
+const sections = load('sections');
+const dataMap = {
+  educations: load('educations'),
+  works: load('works'),
+  projects: load('projects'),
+  skills: load('skills'),
+};
+
+const md = (s) =>
+  String(s ?? '')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+const profile = {
+  name: 'Arman Adhitama Prawirasasra',
+  title: 'Full Stack Web Developer',
+  email: 'arman.adhitama@gmail.com',
+  phone: '+6289676676869',
+  location: 'Bandung, Indonesia',
+  linkedin: 'https://www.linkedin.com/in/armanadhitama',
+  website: 'https://pakmann.cv',
+  summary: `As a passionate Full Stack Developer, I bring extensive experience in designing and maintaining web applications across front-end and back-end environments. Proficient in modern technologies like HTML, CSS/Scss/Sass, JavaScript (Vue, Node.js), and Ruby (RoR), I excel at building dynamic, user-friendly, and scalable applications. With expertise in database management (SQL, MongoDB) and version control (Git), I ensure seamless integration, troubleshoot issues effectively, and deliver optimal user experiences.
+
+I have hands-on experience in creating RESTful APIs, implementing authentication and authorization, and following Agile practices to deliver high-quality software. My familiarity with cloud platforms (AWS, Heroku) and containerization tools (Docker) enables me to build efficient and scalable solutions.
+
+Motivated by challenges, I consistently strive to optimize solutions and enhance workflows. As a collaborative team player, I communicate effectively to align technical and business goals.`,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={`CV of ${profile.name} — ${profile.title}`} />
+    <title>{profile.name} — {profile.title}</title>
+    <style>
+      /* ============================================================
+         1. Tokens
+      ============================================================ */
+      :root {
+        /* color */
+        --ink: #1a1a1a;
+        --muted: #555555;
+        --faint: #777777;
+        --line: #d6d6d6;
+        --accent: #163a5f;
+        --surface: #ffffff;
+        --page-bg: #f3f3f3;
+
+        /* typography */
+        --font: "Helvetica Neue", "Inter", Arial, "Segoe UI", Roboto, system-ui,
+          sans-serif;
+        --text-base: 10.5pt;
+        --text-sm: 9.5pt;
+        --text-xs: 9pt;
+        --text-h1: 23pt;
+        --text-h2: 11.5pt;
+        --text-h3: 11pt;
+        --text-role: 11.5pt;
+        --leading: 1.5;
+        --tracking: 0.1px;
+
+        /* spacing */
+        --space-page-y: 18mm;
+        --space-page-x: 20mm;
+        --space-section: 60px;
+        --space-entry: 24px;
+        --space-block: 5px;
+        --space-tight: 2px;
+
+        /* misc */
+        --radius: 4px;
+      }
+
+      /* ============================================================
+         2. Reset & base
+      ============================================================ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: var(--page-bg);
+        color: var(--ink);
+        font-family: var(--font);
+        font-size: var(--text-base);
+        line-height: var(--leading);
+        font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      p,
+      ul {
+        margin: var(--space-block) 0;
+      }
+
+      li {
+        margin: var(--space-tight) 0;
+      }
+
+      /* ============================================================
+         3. Page
+      ============================================================ */
+      .page {
+        max-width: 210mm;
+        margin: 0 auto;
+        background: var(--surface);
+        padding: var(--space-page-y) var(--space-page-x);
+      }
+
+      section {
+        margin-bottom: var(--space-section);
+      }
+
+      section:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ============================================================
+         4. Profile
+      ============================================================ */
+      .profile {
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 12px;
+        margin-bottom: var(--space-section);
+
+        h1 {
+          margin: 0;
+          font-size: var(--text-h1);
+          line-height: 1.05;
+          font-weight: 700;
+          letter-spacing: 0.6px;
+          color: var(--accent);
+          text-transform: uppercase;
+        }
+
+        .role {
+          margin: 5px 0 11px;
+          font-size: var(--text-role);
+          font-weight: 500;
+          letter-spacing: 0.3px;
+          color: var(--muted);
+        }
+      }
+
+      .contact {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px 8px;
+        font-size: var(--text-sm);
+        color: var(--faint);
+        letter-spacing: var(--tracking);
+
+        .sep {
+          color: var(--line);
+        }
+
+        a {
+          color: var(--faint);
+        }
+      }
+
+      /* ============================================================
+         5. Section heading
+      ============================================================ */
+      h2 {
+        font-size: var(--text-h2);
+        line-height: 1.2;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.4px;
+        color: var(--accent);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 4px;
+        margin: 0 0 10px;
+      }
+
+      /* ============================================================
+         6. Entries
+      ============================================================ */
+      .entry {
+        margin-bottom: var(--space-entry);
+        padding-left: 2px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+
+        h3 {
+          margin: 0;
+          font-size: var(--text-h3);
+          line-height: 1.25;
+          font-weight: 700;
+          letter-spacing: var(--tracking);
+          color: var(--ink);
+        }
+
+        .meta {
+          font-size: var(--text-sm);
+          font-weight: 500;
+          color: var(--muted);
+          white-space: nowrap;
+          text-align: right;
+          font-variant-numeric: tabular-nums;
+        }
+      }
+
+      .sub {
+        font-size: 9.8pt;
+        color: var(--faint);
+        font-style: italic;
+        margin: var(--space-tight) 0 var(--space-block);
+      }
+
+      .label {
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .project-url {
+        margin: 0 0 var(--space-block);
+        font-size: var(--text-sm);
+        color: var(--faint);
+
+        a {
+          color: var(--accent);
+          overflow-wrap: anywhere;
+        }
+      }
+
+      .stacks {
+        font-size: var(--text-sm);
+        color: var(--muted);
+
+        .label {
+          color: var(--accent);
+        }
+      }
+
+      .print-only {
+        display: none;
+      }
+
+      /* ============================================================
+         7. Skills
+      ============================================================ */
+      .skills-group {
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        h3 {
+          margin: 0 0 3px;
+          font-size: 10pt;
+          font-weight: 700;
+        }
+      }
+
+      .skills-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2px 18px;
+
+        li {
+          font-size: var(--text-xs);
+
+          .score {
+            color: var(--muted);
+          }
+        }
+      }
+
+      /* ============================================================
+         8. Toolbar
+      ============================================================ */
+      .print-bar {
+        max-width: 210mm;
+        margin: 16px auto;
+        text-align: center;
+
+        button {
+          font: inherit;
+          font-size: 10pt;
+          padding: 8px 20px;
+          cursor: pointer;
+          border: 1px solid var(--line);
+          background: var(--surface);
+          border-radius: var(--radius);
+
+          &:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+          }
+        }
+      }
+
+      /* ============================================================
+         9. Print / PDF
+      ============================================================ */
+      @media print {
+        @page {
+          size: A4;
+          margin: 14mm 16mm;
+        }
+
+        html,
+        body {
+          background: var(--surface);
+        }
+
+        .print-only {
+          display: block;
+        }
+
+        .page {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .print-bar {
+          display: none;
+        }
+
+        * {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        section,
+        .entry,
+        .skills-group {
+          break-inside: avoid;
+        }
+
+        h2,
+        .entry-head {
+          break-after: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="print-bar no-print">
+      <button onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+    <main class="page" id="cv">
+      <header class="profile">
+        <h1>{profile.name}</h1>
+        <p class="role">{profile.title}</p>
+        <div class="contact">
+          <span>{profile.location}</span>
+          <span class="sep">·</span>
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          <span class="sep">·</span>
+          <a href={`https://wa.me/${profile.phone.replace(/\D/g, "")}`}>{profile.phone}</a>
+          <span class="sep">·</span>
+          <a href={profile.linkedin}>{profile.linkedin.replace("https://", "")}</a>
+          <span class="sep">·</span>
+          <a href={profile.website}>{profile.website}</a>
+        </div>
+      </header>
+
+      {
+        profile.summary && (
+          <section aria-label="Summary">
+            <h2 class="print-only">Summary</h2>
+            {profile.summary.split("\n\n").map((para) => (
+              <p>{para}</p>
+            ))}
+          </section>
+        )
+      }
+
+      {
+        sections.map((section) => {
+          const items = dataMap[section.file] ?? [];
+          if (!items.length) return null;
+          return (
+            <section aria-labelledby={`sec-${section.file}`}>
+              <h2 id={`sec-${section.file}`}>{section.title}</h2>
+
+              {section.file === "educations" &&
+                items.map((e) => (
+                  <div class="entry">
+                    <div class="entry-head">
+                      <h3>{e.school}</h3>
+                      <span class="meta">{e.period}</span>
+                    </div>
+                    <p class="sub">
+                      {e.type}
+                      {e.location ? ` — ${e.location}` : ""}
+                    </p>
+                  </div>
+                ))}
+
+              {section.file === "works" &&
+                items.map((w) => (
+                  <div class="entry">
+                    <div class="entry-head">
+                      <h3>
+                        {w.title}
+                        {w.company ? `, ${w.company}` : ""}
+                      </h3>
+                      <span class="meta">{w.period}</span>
+                    </div>
+                    <p class="sub">
+                      {w.location}
+                      {w.employment ? ` (${w.employment})` : ""}
+                    </p>
+                    {w.about && <p set:html={md(w.about)} />}
+                    {w.objectives && (
+                      <p>
+                        <span class="label">Responsibilities: </span>
+                        <span set:html={md(w.objectives)} />
+                      </p>
+                    )}
+                    {w.achievements && (
+                      <p>
+                        <span class="label">Achievements: </span>
+                        {w.achievements}
+                      </p>
+                    )}
+                    {w.stacks && (
+                      <p class="stacks">
+                        <span class="label">Stack: </span>
+                        {w.stacks}
+                      </p>
+                    )}
+                    {w.portfolios && (
+                      <ul>
+                        {w.portfolios.map((p) =>
+                          typeof p === "string" ? (
+                            <li>
+                              <a href={p}>{p.replace("https://", "")}</a>
+                            </li>
+                          ) : (
+                            <li>
+                              {p.desc}
+                              {p.stacks ? ` — ${p.stacks}` : ""}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+
+              {section.file === "projects" &&
+                items.map((p) => (
+                  <div class="entry">
+                    <div class="entry-head">
+                      <h3>{p.title}</h3>
+                      <span class="meta">{p.year}</span>
+                    </div>
+                    {p.url && <p class="project-url"><a href={p.url}>{p.url}</a></p>}
+                    {p.about && <p set:html={md(p.about)} />}
+                    {p.objectives && (
+                      <p>
+                        <span class="label">Role: </span>
+                        {p.objectives}
+                      </p>
+                    )}
+                  </div>
+                ))}
+
+              {section.file === "skills" &&
+                items.map((g) => (
+                  <div class="skills-group">
+                    <h3>{g.group}</h3>
+                    <ul class="skills-list">
+                      {g.softwares.map((s) => (
+                        <li>
+                          {s.name}
+                          {typeof s.score === "number" && (
+                            <span class="score"> ({s.score}/5)</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </section>
+          );
+        })
+      }
+    </main>
+  </body>
+</html>

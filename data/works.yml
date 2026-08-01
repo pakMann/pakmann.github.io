@@ -1,0 +1,167 @@
+# -
+#   period: Mar 2024 - present
+#   title: Full-stack Developer (part-time)
+#   company: streamac.com
+#   location: Jakarta (remote work)
+#   about: |
+#     [Streamac](https://streamac.com) provides subscription-based games specifically designed for TikTok live streamers, enabling them to enhance engagement with their audience. The platform also offers custom game development services, allowing streamers and businesses to create unique, tailored gaming experiences for their live streams.
+
+-
+  period: May 2025 - present
+  title: Full Stack Engineer
+  company: Priventry AI
+  location: Bandung, Indonesia
+  employment: full-time
+  about: |
+    Priventry AI is a technology company focused on building and implementing practical AI solutions for real-world operations. The company specializes in automation, data intelligence, and custom AI development tailored to business workflows.
+  objectives: |
+    Developing KAI’s internal finance application, including improving existing features and building new functionality to support operational efficiency.
+  stacks: Laravel, MySQL, Google Vertex, Git
+
+-
+  period: Mar 2025 - May 2025
+  title: Fullstack Web Developer
+  company: Tokhimo Inc.
+  location: Tokyo, Japan (remote)
+  employment: contract
+  about: |
+    [Tokhimo Inc.](https://www.tokhimo.com) connects Japanese businesses with multilingual talent and offers offshore software development. Through job portals, internships, and TITP, they promote diversity and innovation for Japan's global success.
+  objectives: |
+    Develop e-commerce for selling instant drinks where customer can create their own flavors (and sell them as well). The site is [Choicetuch](https://choicetuch.com).
+  stacks: Ruby on Rails, Stimulus, PostgreSQL, Bootstrap (Sass), Stripe, Ubuntu Server, Git, Figma
+
+-
+  period: Mar 2024 - Oct 2024
+  title: Frontend Developer
+  company: INOA
+  location: Brussels, Belgium (remote)
+  employment: full-time
+  about: |
+    [INOA](https://www.inoa.group) is a technology firm specializing in branding, marketing, design, development, and project management. They support startups and scaling ventures in industries like AI, cryptocurrency, VR, and smart construction, driving growth with innovative solutions.
+  objectives: Convert Figma designs into functional React components and responsive user interfaces, and transformed Figma layouts into precise Webflow projects. Additionally, I contributed to a backend web scraping project for customer data verification from European sources.
+  stacks: React JS, Tailwind, Webflow, GSAP, Monday.com, Figma
+
+-
+  period: Feb 2022 - Feb 2024
+  title: Fullstack Web Developer
+  company: Tokhimo Inc.
+  location: Tokyo, Japan (remote)
+  employment: contract
+  about: |
+    [Tokhimo Inc.](https://www.tokhimo.com) connects Japanese businesses with multilingual talent and offers offshore software development. Through job portals, internships, and TITP, they promote diversity and innovation for Japan's global success.
+  objectives: Develop the MVP for Patient Success, a cloud-based CRM (SaaS) by WishHealth Co., Ltd., a digital patient engagement specialist in Japan. Responsibilities included building core platform features, integrating third-party services such as LINE messaging and Stripe, and managing AWS infrastructure for scalability and reliability.
+  stacks: Ruby on Rails, PostgreSQL, Bulma (Sass), VueJS, Stripe, LINE LIFF, Docker, AWS (Route 53, S3, Lightsail, RDS, EC2, SES, ACM, ECS, Fargate), Git, Jira, Figma
+
+-
+  period: Jan 2020 - Jan 2022
+  title: Software Development Lead
+  company: Synergy Engineering Group
+  location: South Tangerang, Indonesia (hybrid)
+  employment: contract
+  about: |
+    [Synergy Engineering](https://synergyengineering.com) is a multidisciplinary engineering consultant with specialist capability providing comprehensive technical services across industries, primarily to the energy sector including Oil and Gas, renewable energy, solar, and general industry.
+  objectives: Develop the Synergy Business Suite ([SBS](https://sbs.synergyengineering.com)), a toolset for managing HR and CRM activities at Synergy Group. This involved collaborating with various departments to gather requirements and translate them into efficient web-based workflows.
+  achievements: I developed an online attendance system, used by over 300 employees since the onset of Covid-19, replacing the outdated fingerprint scan system with an Active Directory-integrated solution. Additionally, I created a web-based tool for safety and process engineers to calculate and analyze fire and explosion risks.
+  portfolios:
+    -
+      desc: https://sbs.synergyengineering.com;
+      stacks: Ruby on Rails, Slim, Bootstrap (Sass), Microsoft Active Directory, PostgreSQL, MongoDB, Git, Ubuntu Server, Trello
+    -
+      desc: Document Management System for Pertamina Hulu Energi Offshore Southeast Sumatra (PHE OSES);
+      stacks: Laravel, MySQL, Git, Ubuntu Server. Trello
+    -
+      desc: Technical Management of Change system for Pertamina Hulu Energi Offshore Southeast Sumatra (PHE OSES).
+      stacks: Symfony, MySQL, Git, Ubuntu Server, Trello
+
+-
+  period: Jun 2019 - Jan 2020
+  title: Frontend Developer
+  company: sejasa.com
+  location: Bandung, Indonesia (on-site)
+  employment: full-time
+  about: |
+    [sejasa.com](https://sejasa.com) is an online marketplace that brings together various service providers such as construction and cleaning services with customers. Sejasa is part of Recommend Group Malaysia which operates in Malaysia ([recommend.my](https://recommend.my)) and Thailand ([helpdee.com](https://helpdee.com)) as well.
+  objectives: Collaborate with a UI/UX designer to implement designs into Ruby on Rails pages, enabling seamless integration for functionality by other developers. Resolve frontend issues in existing web and app pages to enhance user experience.
+  achievements: Create an embedded mobile application inside [Grab Super App](https://play.google.com/store/apps/details?id=com.grabtaxi.passenger) (if you're using Grab app, you can see through **Clean & Fix** menu).
+  stacks: Ruby On Rails, Haml, Bootstrap (Sass), jQuery Mobile, Git
+
+-
+  period: Jan 2017 - May 2019
+  title: Lead Developer
+  company: Kopihub
+  location: Bandung, Indonesia (hybrid)
+  employment: full-time
+  about: KopiHub is a subsidiary of Lipsia Group ([lipsiagroup.com](https://lipsiagroup.com)), a small Milan-based company offering services like website development and e-commerce outsourcing to its clients.
+  objectives: Maintain and enhance Lipsia's e-commerce engine while leading the development team in building and managing client's e-commerce websites, including occasional redesigns. Also handled server configuration, maintenance, and migration tasks.
+  portfolios:
+    - https://www.nerdoverdose.com
+    - https://www.ogtm.com
+    - https://www.bagnoitaliano.it
+    - https://www.lampada-proiettore.com
+    - https://www.leshommes.com
+    - https://www.babingtons.com
+    - https://www.bi-kappa.it
+    - https://www.santaninfabags.it
+  stacks: Ruby on Rails, Git, Haml, Slim, Bootstrap (Sass), jQuery, Ubuntu Server, PayPal
+
+-
+  period: Jan 2015 - Feb 2016
+  title: Fullstack Developer
+  company: PT. Tennova Cipta Inatech
+  location: Jakarta, Indonesia (hybrid)
+  employment: full-time
+  about: Tennova Cipta Inatech is a digital startup company behind [Gesek](https://gesek.id), which later became [Pomona](https://pomona.id).
+  objectives: Implement designs from the UI/UX designer into fully functional websites and CMS using Ruby on Rails. Develop RESTful APIs and managed cloud servers on AWS, ensuring optimal performance and reliability.
+  stacks: Ruby on Rails, Slim, Bootstrap (CSS), MySQL, Elasticsearch, AWS (EC2, RDS), Git, Grape API
+
+-
+  period: Jun 2014 - Jan 2015
+  title: Ruby on Rails Developer
+  company: Codecampz
+  location: Tangerang, Indonesia (on-site)
+  employment: apprenticeship
+  about: Codecampz is a web development agency, specializing in Ruby on Rails application development.
+  objectives: Create and implement UI/UX designs while coding both frontend and backend functionalities to deliver complete and functional solutions.
+  stacks: Photoshop, Ruby on Rails, ERB, Haml, Scss, Bootstrap (Scss & CSS), jQuery, Angular, rSpec, MySQL, PostgreSQL, MongoDB, Heroku, Ubuntu Server, Pivotal Tracker, Git
+
+-
+  period: Dec 2011 - Feb 2014
+  title: UI/UX Designer & Frontend Developer
+  company: PT. Jaya Sportindo
+  location: Bekasi, Indonesia (on-site)
+  employment: full-time
+  about: Jaya Sportindo is an authorized distributor of Ultimate Nutrition and various sporting goods for the fitness market across Indonesia since 2009. Owned by [Denny Santoso](https://www.linkedin.com/in/dennysantoso), Jaya Sportindo tried their luck in the digital startup world by creating SixReps, social media for fitness enthusiasts, and later on Beautiplan, social media for beauticians.
+  objectives: Design UI/UX interfaces using Adobe Photoshop and convert them into fully functional HTML pages for sixreps.com and beautiplan.com.
+  stacks: Photoshop, HTML, Bootstrap (CSS), jQuery, traditional kanban, Git
+
+-
+  period: Jun 2010 - Nov 2011
+  title: Fullstack Developer
+  company: GoLive! Mobile
+  location: Boston, USA (remote)
+  employment: full-time
+  about: Golive! Mobile is a mobile content company that is ranked \#1 fastest growing media company on the 2011 ***Inc500*** list. One of the company's products is AirPush, a mobile advertising platform.
+  objectives: Convert PSD design files into responsive HTML layouts, ensuring cross-device compatibility. Additionally, I developed a custom CMS for AirPush, a native Android ad platform.
+  stacks: HTML, CSS, CodeIgniter, WordPress, jQuery, MySQL
+
+-
+  period: Jun 2008 - Jul 2010
+  title: Frontend Developer
+  company: PT. Walden Global Services
+  location: Bandung, Indonesia (on-site)
+  employment: full-time
+  about: |
+    [WGS](https://www.wgs.co.id/) is a software development agency in Bandung with various clients across the globe.
+  objectives: Develop frontends for client projects by converting PSD/mockups into HTML, WordPress themes, or Ruby on Rails applications. Built simple CMS solutions using CodeIgniter and MySQL for efficient content management. Additionally, provided internal mentorship on frontend development to improve team skills and expertise.
+  stacks: HTML, CSS, CodeIgniter, Ruby on Rails, Javascript, SVN, WordPress, MySQL
+
+-
+  period: Oct 2007 - May 2008
+  title: UI/UX & Frontend Developer
+  company: PT. MANDIRI CReASINDO
+  location: Jakarta, Indonesia (on-site)
+  employment: full-time
+  about: |
+    [PT. MANDIRI CReASINDO](https://web.mcreasindo.com/) was founded in 2005 as a software development company based on its customers' needs. The clients mostly are government institutions.
+  objectives: Design user interface and translate it into working code on various web-based closed systems and public websites for the clients.
+  stacks: HTML, CSS, Zend PHP

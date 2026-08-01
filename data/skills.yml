@@ -1,0 +1,108 @@
+# -
+#   group: Design Tools
+#   softwares:
+#     -
+#       name: Adobe Illustrator
+#       score: 3
+#     # -
+#     #   name: Adobe Photoshop
+#     #   score: 2
+#     -
+#       name: Adobe XD
+#       score: 3
+#     -
+#       name: Figma
+#       score: 1
+
+-
+  group: Frontend Languages
+  softwares:
+    -
+      name: HTML/HAML/SLIM
+      score: 5
+    -
+      name: CSS/SCSS/SASS
+      score: 5
+    -
+      name: Javascript/Typescript
+      score: 3
+
+-
+  group: Frontend Frameworks
+  softwares:
+    -
+      name: Bootstrap
+      score: 4
+    -
+      name: Bulma
+      score: 4
+    -
+      name: TailwindCSS
+      score: 4
+    -
+      name: jQuery
+      score: 4
+    -
+      name: Vue.js & Nuxt
+      score: 2
+    -
+      name: Middleman
+      score: 4
+
+-
+  group: Server Side Languages
+  softwares:
+    -
+      name: Ruby
+      score: 4
+    -
+      name: PHP
+      score: 2.5
+
+-
+  group: Backend & Full-stack Frameworks
+  softwares:
+    -
+      name: Ruby on Rails
+      score: 4
+    -
+      name: Laravel
+      score: 2
+    -
+      name: Sinatra / Padrino
+      score: 3
+    -
+      name: Wordpress
+      score: 3.5
+
+-
+  group: Database
+  softwares:
+    -
+      name: Postgre & MySQL
+      score: 3
+    -
+      name: MongoDB
+      score: 2
+    -
+      name: Redis
+      score: 3
+    -
+      name: Elasticsearch
+      score: 2
+
+-
+  group: Servers
+  softwares:
+    -
+      name: Several AWS prods.
+      score: 3
+    -
+      name: Ubuntu
+      score: 4
+    -
+      name: Heroku
+      score: 2.5
+    -
+      name: Kubernetes
+      score: 1.5

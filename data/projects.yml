@@ -1,0 +1,96 @@
+# -
+#   year: 2025 - 2026
+#   title: Barokas
+#   about: |
+#     Barokas is mobile app that can help you manage your finance the sharia way.
+#   objectives: Develop mobile apps for Android using Flutter.
+
+-
+  year: 2025
+  title: Eurozone
+  url: https://eurozone.id
+  about: |
+    [Euorozone](https://eurozone.id) sells luxuries car's sparepart and accessories in Jakarta.
+  objectives: Fix issues and tweak performance & SEO (Wordpress).
+
+-
+  year: 2024
+  title: Streamac
+  url: https://streamac.com
+  about: |
+    [Streamac](https://streamac.com) provides subscription-based games specifically designed for TikTok live streamers, enabling them to enhance engagement with their audience. The platform also offers custom game development services, allowing streamers and businesses to create unique, tailored gaming experiences for their live streams.
+  objectives: Design and develop a landing page with Nuxt, GSAP, and Bootstrap (Sass), customize aMember for a membership platform using MySQL and Bootstrap, and built a TikTok Live Connector tool with Node, Electron, and Socket.io.
+
+-
+  year: 2023
+  title: Mulia Saskara Dharmawangsa
+  url: https://msd.co.id
+  about: A holding company which has several subsidiaries engaged in trade, logistics, education and others.
+  objectives: Create web design directly on Wix.
+
+-
+  year: 2020 - 2022
+  title: PayMe Forms
+  url: https://paymeforms.com
+  about: Embeddable shopping cart widget integrated with Stripe.
+  objectives: Frontend development using Vue.js and Bootstrap (Sass), including landing page and versatile, embeddable payment form.
+
+-
+  year: 2021
+  title: Tystyle Construction
+  url: https://www.tystyle.com.au
+  about: Construction agency located on the Sunshine Coast, AU.
+  objectives: Customize Squarespace template to match the company's branding and services.
+
+# -
+#   year: 2021
+#   title: Dr. Robb
+#   url: https://hellochews.com.au
+#   about: Australian-based dental care products.
+#   objectives: Develop custom Shopify theme using Liquid, HTML, CSS, and JavaScript.
+
+-
+  year: 2021
+  title: The Alfresco Room Noosa
+  url: https://www.thealfrescoroom.com.au
+  about: Australian-based furniture company.
+  objectives: Develop custom Shopify theme using Liquid, HTML, CSS, and JavaScript.
+
+# -
+#   year: 2021
+#   title: The Pines, Palmwoods
+#   url: https://www.thepinespalmwoods.com.au
+#   about: Queensland's Sunshine Coast, AU real estate company.
+#   objectives: Customize Squarespace template.
+
+# -
+#   year: 2021
+#   title: Bubu Jungle Resort
+#   url: https://bubujungleresort.com
+#   about: Website and CMS using Ruby on Rails for a resort in Ciwidey, Kabupaten Bandung.
+
+# -
+#   year: 2019 - 2020
+#   title: Abodable
+#   url: https://abodable.com.au
+#   about: Web development for property broker company in Australia using Ruby on Rails and React JS.
+
+# -
+#   year: 2018
+#   title: AppTrends
+#   url: https://apptrends.com
+#   about: Web design for Funnel marketing service based in Las Vegas, NV.
+#   objectives: Create UI/UX & translated into HTML/CSS.
+
+# -
+#   year: 2016
+#   title: Graphical Cashflow Monitoring
+#   about: Single-page web-based application for monitoring inbound, outbound & balance for PT. Arkon Prima Indonesia.
+#   objectives: Develop web-based application using Ruby on Rails, including UI/UX design using Bootstrap.
+
+-
+  year: 2010
+  title: The Monkees
+  url: https://monkees.net
+  about: A fan site for The Monkees, featuring news, tour info, biographies, and exclusive content about the iconic band. Built using Wordpress.
+  objectives: Customize Wordpress theme.
