@@ -808,86 +808,7 @@ const date = new Date().toLocaleDateString('en-GB', {
       }
 
       /* ============================================================
-         11. Contact (classified ad)
-      ============================================================ */
-      .contact-ad {
-        border: 2px solid var(--rule-thick);
-        text-align: center;
-        padding: 48px 28px 40px;
-        position: relative;
-        background: rgba(255, 255, 255, 0.2);
-
-        &::before {
-          content: "";
-          position: absolute;
-          inset: 6px;
-          border: 1px solid var(--line);
-          pointer-events: none;
-        }
-
-        .cat {
-          font-family: var(--font-sans);
-          font-size: 11px;
-          font-weight: 800;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: var(--gold);
-        }
-
-        h2 {
-          font-family: var(--font-serif);
-          font-size: clamp(28px, 5vw, 44px);
-          margin: 14px 0 10px;
-
-          em {
-            font-style: italic;
-            color: var(--accent);
-          }
-        }
-
-        p {
-          color: var(--muted);
-          margin: 0 0 26px;
-          font-size: 16.5px;
-        }
-
-        .ad-links {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 12px;
-
-          a {
-            font-family: var(--font-sans);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 12px 26px;
-            border: 1.5px solid var(--rule-thick);
-            transition: background 0.2s, color 0.2s;
-
-            &.solid {
-              background: var(--rule-thick);
-              color: var(--paper);
-
-              &:hover {
-                background: var(--accent);
-                border-color: var(--accent);
-              }
-            }
-
-            &:not(.solid):hover {
-              background: var(--ink);
-              border-color: var(--ink);
-              color: var(--paper);
-            }
-          }
-        }
-      }
-
-      /* ============================================================
-         12. Footer (colophon)
+         11. Footer (colophon)
       ============================================================ */
       .colophon {
         border-top: 4px double var(--rule-thick);
@@ -954,7 +875,6 @@ const date = new Date().toLocaleDateString('en-GB', {
           <a href={`#${s.file}`}>{s.title}</a>
         ))}
         <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
       </nav>
 
       <!-- ============ FRONT PAGE ============ -->
@@ -1136,29 +1056,9 @@ const date = new Date().toLocaleDateString('en-GB', {
         ))}
       </section>
 
-      <!-- ============ CONTACT (CLASSIFIED AD) ============ -->
-      <section id="contact">
-        <div class="contact-ad reveal">
-          <div class="cat">Want Ad</div>
-          <h2>
-            Wanted: A <em>Great Project</em>
-          </h2>
-          <p>
-            Full-stack developer with over 17 years in the trade, seeking
-            interesting opportunities.
-          </p>
-          <div class="ad-links">
-            <a class="solid" href={`mailto:${profile.email}`}>Reply by Mail</a>
-            <a href={`https://wa.me/${profile.phone.replace(/\D/g, '')}`}>WhatsApp</a>
-            <a href={profile.linkedin}>LinkedIn</a>
-            <a href={profile.website}>Website</a>
-          </div>
-        </div>
-      </section>
-
       <!-- ============ COLOPHON ============ -->
       <footer class="colophon">
-        <span>© {new Date().getFullYear()} {profile.name}</span>
+        <span>Made with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>, hosted on <a href="https://github.com/pakMann/pakmann.github.io" target="_blank" rel="noopener">GitHub</a></span>
         <div class="socials">
           <a href={profile.linkedin}>LinkedIn</a>
           <a href={`https://wa.me/${profile.phone.replace(/\D/g, '')}`}>WhatsApp</a>
