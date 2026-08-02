@@ -391,13 +391,19 @@ const date = new Date().toLocaleDateString('en-GB', {
       }
 
       .story-col {
-        column-count: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         column-gap: 40px;
-        column-rule: 1px solid var(--line);
 
         p {
-          margin: 0 0 18px;
+          margin: 0;
           text-align: justify;
+          break-inside: avoid;
+
+          & + p {
+            border-left: 1px solid var(--line);
+            padding-left: 40px;
+          }
 
           &:first-child::first-letter {
             font-family: var(--font-serif);
@@ -413,7 +419,13 @@ const date = new Date().toLocaleDateString('en-GB', {
 
       @media (max-width: 700px) {
         .story-col {
-          column-count: 1;
+          grid-template-columns: 1fr;
+
+          p + p {
+            border-left: none;
+            padding-left: 0;
+            margin-top: 18px;
+          }
         }
       }
 
