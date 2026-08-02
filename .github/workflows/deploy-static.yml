@@ -20,6 +20,7 @@ jobs:
       # Install dependencies and build the project
       - run: npm install
       - run: npm run build
+      - run: npm run generate:pdf
 
       # Upload the static site artifact
       - name: Upload artifact
