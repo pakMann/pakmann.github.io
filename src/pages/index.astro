@@ -294,6 +294,18 @@ const date = new Date().toLocaleDateString('en-GB', {
             color: var(--accent);
           }
         }
+
+        .download-cv {
+          color: var(--accent);
+          border: 1px solid var(--accent);
+          padding: 4px 14px;
+          text-decoration: none;
+
+          &:hover {
+            background: var(--accent);
+            color: var(--surface);
+          }
+        }
       }
 
       .container {
@@ -875,6 +887,7 @@ const date = new Date().toLocaleDateString('en-GB', {
           <a href={`#${s.file}`}>{s.title}</a>
         ))}
         <a href="#skills">Skills</a>
+        <a href="/cv.pdf" class="download-cv">Download CV</a>
       </nav>
 
       <!-- ============ FRONT PAGE ============ -->
